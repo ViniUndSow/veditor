@@ -1,0 +1,12 @@
+"clans" : {
+  "name": "Testvampiere",
+  "key": "TEST_VAMPIERE",
+  "data" : {
+    "disziplinen": {
+      "Fleischform": 0,
+      "Tierhaftigkeit": 0,
+      "Auspex" : 0
+    },
+    "schwaeche": "Hier kommt coole lore."
+  }
+}
