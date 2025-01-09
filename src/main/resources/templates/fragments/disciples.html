@@ -1,0 +1,9 @@
+<div class="row form-floating" th:id="${id}">
+        <select th:id="${id.concat('Select')}"th:name="${name}" class="form-select" style="margin-bottom: 1%">
+           <option selected value="null">----</option>
+            <div th:each="disciline : ${disciplines['vampire1.0']}">
+                <option th:value="${disciline.id}"
+                       th:text="${disciline.name}"></option>
+    </div>
+    </select> <label th:for="${id}" th:text="${labelName}"></label>
+</div>

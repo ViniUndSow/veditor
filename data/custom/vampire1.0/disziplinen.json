@@ -1,0 +1,17 @@
+{
+    "jsonkey": "DISCIPLINE",
+    "data": [
+        {
+            "id": 1,
+            "name": "Auspex"
+        },
+        {
+            "id": 2,
+            "name": "Fleischform"
+        },
+        {
+            "id": 3,
+            "name": "Tierhaftigkeit"
+        }
+    ]
+}

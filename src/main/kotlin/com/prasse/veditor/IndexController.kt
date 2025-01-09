@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
@@ -23,6 +24,7 @@ class IndexController(
         model.addAttribute("clans", clanLoaerService.loadClans())
         model.addAttribute("talente", talentService.loadTalents())
         model.addAttribute("disciplines", desciplineService.loadTalents())
+        model.addAttribute("maxDisciplines", 8)
         return "index"
     }
 
@@ -34,5 +36,14 @@ class IndexController(
         desciplineService.loadTalents()
 
         return "redirect:/"
+    }
+
+    @GetMapping("/loadAdditional/disciples/{count}")
+    fun loadAdditional(model: Model, @PathVariable("count") count: Int): String {
+        model.addAttribute("id", "discipline$count")
+        model.addAttribute("disciplines", desciplineService.loadTalents())
+        model.addAttribute("name", "discipline$count")
+        model.addAttribute("labelName","Diszipline ${count-3}")
+        return "fragments/disciples"
     }
 }

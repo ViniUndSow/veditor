@@ -1,0 +1,13 @@
+{
+    "jsonkey": "CLANS",
+    "data": [
+        {
+            "id": 1,
+            "name": "Tzimisce",
+            "discipline": [
+                1,2,3
+            ],
+            "weakness": "Muss in mind. 2 Hand voll heimischer Erde schlafen."
+        }
+    ]
+}

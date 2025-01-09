@@ -1,0 +1,17 @@
+{
+    "jsonkey": "BACKGROUND",
+    "data": [
+        {
+            "id": 1,
+            "name": "Alter"
+        },
+        {
+            "id": 2,
+            "name": "Status"
+        },
+        {
+            "id": 3,
+            "name": "Ruhm"
+        }
+    ]
+}
