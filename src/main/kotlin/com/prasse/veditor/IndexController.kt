@@ -1,8 +1,6 @@
 package com.prasse.veditor
 
 import com.prasse.veditor.files.JsonService
-import jakarta.annotation.PostConstruct
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,7 +12,8 @@ class IndexController(
     val clanLoaerService: ClanLoaderService,
     val talentService: TalentService,
     val desciplineService: DesciplineService,
-    val jsonService: JsonService
+    val jsonService: JsonService,
+    val fertigkeitenService: FertigkeitenService
 ) {
 
     @GetMapping("/")
@@ -22,9 +21,11 @@ class IndexController(
 
         model.addAttribute("siteTitle", "Editor")
         model.addAttribute("clans", clanLoaerService.loadClans())
-        model.addAttribute("talente", talentService.loadTalents())
         model.addAttribute("disciplines", desciplineService.loadTalents())
         model.addAttribute("maxDisciplines", 8)
+        // Attributes
+        model.addAttribute("talente", talentService.loadTalents())
+        model.addAttribute("skills", fertigkeitenService.loadSkills())
         return "index"
     }
 

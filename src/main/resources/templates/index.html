@@ -11,8 +11,27 @@
     </nav>
     <!-- Container Charakter Daten -->
     <div class="container" data-bs-theme="light" style="margin-bottom: 1%">
-        <h2 class="text-center gothic-font" style="margin-bottom: 1%">Allgemeines</h2>
+        <div class="row" style="margin-bottom: 1%">
+            <div class="col-5">
+                <hr>
+            </div>
+            <div class="col-2">
+                <h2 class="text-center gothic-font">Allgemeines</h2>
+            </div>
+            <div class="col-5">
+                <hr>
+            </div>
+        </div>
 
+        <div class="row" style="margin-bottom: 1%">
+            <div class="col-12 form-floating">
+                <select id="clanInput" th:name="${clanInput}" class="form-select col-12" th:onchange="changeClanData()">
+                    <option value="null">Bitte auswählen</option>
+                    <option th:each="clan : ${clans['vampire1.0']}" th:value="${clan.id}"
+                            th:text="${clan.name}"></option>
+                </select> <label for="clanInput">Clan:</label>
+            </div>
+        </div>
         <!-- Reihe 1 -->
         <div class="row" style="margin-bottom: 1%">
             <div class="col-4">
@@ -56,13 +75,6 @@
                     </div>
                 </div>
                 <!-- Mitte -->
-                <div class="col-4 form-floating">
-                    <select id="clanInput" th:name="${clanInput}" class="form-select col-12" th:onchange="changeClanData()">
-                        <option value="null">Bitte auswählen</option>
-                        <option th:each="clan : ${clans['vampire1.0']}" th:value="${clan.id}"
-                                th:text="${clan.name}"></option>
-                    </select> <label for="clanInput">Clan:</label>
-                </div>
                 <!-- Rechts -->
                 <div class="col-4">
                 </div>
@@ -72,7 +84,49 @@
     </div>
     <!-- Attribute-->
     <div class="container">
-        <h2 class="text-center gothic-font">Attribute</h2>
+        <div class="row">
+            <div class="col-5">
+                <hr>
+            </div>
+            <div class="col-2">
+                <h2 class="text-center gothic-font">Attribute</h2>
+            </div>
+            <div class="col-5">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="row">
+                    <h3 class="text-center">Körperlich</h3>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <h3 class="text-center">Gesellschaftlich</h3>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <h3 class="text-center">Geistig</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--Fähigkeiten-->
+    <div class="container">
+        <div class="row" style="margin-bottom: 1%">
+            <div class="col-5">
+                <hr>
+            </div>
+            <div class="col-2">
+                <h2 class="text-center gothic-font">Fähigkeiten</h2>
+            </div>
+            <div class="col-5">
+                <hr>
+            </div>
+        </div>
         <div class="row">
             <div class="col-4">
                 <div class="row">
@@ -91,12 +145,12 @@
                 <div class="row">
                     <h3 class="text-center">Fertigkeiten</h3>
                 </div>
-                <div class="row" th:each="fertigkeit: ${fertigkeiten}" style="margin-bottom: 3px;">
+                <div class="row" th:each="fertigkeit: ${skills['vampire1.0']}" style="margin-bottom: 3px;">
                     <div class="col-6">
-                        <p th:text="${fertigkeit.range}" />
+                        <p th:text="${fertigkeit.name}" />
                     </div>
                     <div class="col-6">
-                        <input type="number">
+                        <input type="range" class="form-range" min="0" max="5">
                     </div>
                 </div>
             </div>
@@ -115,13 +169,19 @@
             </div>
         </div>
     </div>
-    <!--Fähigkeiten-->
-    <div class="container">
-        <h2 class="text-center gothic-font">Fähigkeiten</h2>
-    </div>
     <!-- Vorteile -->
     <div class="container">
-        <h2 class="text-center gothic-font">Vorteile</h2>
+        <div class="row" style="margin-bottom: 1%">
+            <div class="col-5">
+                <hr>
+            </div>
+            <div class="col-2">
+                <h2 class="text-center gothic-font">Vorteile</h2>
+            </div>
+            <div class="col-5">
+                <hr>
+            </div>
+        </div>
         <div class="row">
             <div class="col-4">
                 <div class="row">
