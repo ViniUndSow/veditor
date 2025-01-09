@@ -27,3 +27,14 @@ body, h1, h2, p, ul, li {
 body {
     background-color: white;
 }
+.row > .form-floating > label {
+    margin-left:0.75em;
+}
+
+.form-range::-webkit-slider-thumb {
+    background-color: #b60000;
+    background-image: url("static/img/icons8-drop-64.png");
+    background-size: 43%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
