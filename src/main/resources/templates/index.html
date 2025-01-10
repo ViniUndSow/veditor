@@ -9,20 +9,11 @@
             <a class="navbar-brand" href="#">Navbar</a>
         </div>
     </nav>
+    <div class="container" data-bs-theme="light" style="margin-bottom: 1%">
+    </div>
     <!-- Container Charakter Daten -->
     <div class="container" data-bs-theme="light" style="margin-bottom: 1%">
-        <div class="row" style="margin-bottom: 1%">
-            <div class="col-5">
-                <hr>
-            </div>
-            <div class="col-2">
-                <h2 class="text-center gothic-font">Allgemeines</h2>
-            </div>
-            <div class="col-5">
-                <hr>
-            </div>
-        </div>
-
+        <div th:replace="~{fragments/sectionHeadline('Allgemeines')}"/>
         <div class="row" style="margin-bottom: 1%">
             <div class="col-12 form-floating">
                 <select id="clanInput" th:name="${clanInput}" class="form-select col-12" th:onchange="changeClanData()">
@@ -84,17 +75,7 @@
     </div>
     <!-- Attribute-->
     <div class="container">
-        <div class="row">
-            <div class="col-5">
-                <hr>
-            </div>
-            <div class="col-2">
-                <h2 class="text-center gothic-font">Attribute</h2>
-            </div>
-            <div class="col-5">
-                <hr>
-            </div>
-        </div>
+        <div th:replace="~{fragments/sectionHeadline('Attribute')}"/>
         <div class="row">
             <div class="col-4">
                 <div class="row">
@@ -118,17 +99,7 @@
     </div>
     <!--Fähigkeiten-->
     <div class="container">
-        <div class="row" style="margin-bottom: 1%">
-            <div class="col-5">
-                <hr>
-            </div>
-            <div class="col-2">
-                <h2 class="text-center gothic-font">Fähigkeiten</h2>
-            </div>
-            <div class="col-5">
-                <hr>
-            </div>
-        </div>
+        <div th:replace="~{fragments/sectionHeadline('Fähigkeiten')}"/>
         <div class="row">
             <div class="col-4">
                 <div class="row">
@@ -152,17 +123,8 @@
     </div>
     <!-- Vorteile -->
     <div class="container">
-        <div class="row" style="margin-bottom: 1%">
-            <div class="col-5">
-                <hr>
-            </div>
-            <div class="col-2">
-                <h2 class="text-center gothic-font">Vorteile</h2>
-            </div>
-            <div class="col-5">
-                <hr>
-            </div>
-        </div>
+        <div th:replace="~{fragments/sectionHeadline('Vorteile')}"/>
+
         <div class="row">
             <div class="col-4">
                 <div class="row">
