@@ -1,9 +1,7 @@
-package com.prasse.veditor
+package com.prasse.veditor.service
 
-import com.fasterxml.jackson.databind.JsonNode
 import com.prasse.veditor.files.JsonService
 import com.prasse.veditor.model.Discipline
-import com.prasse.veditor.model.Talent
 import org.springframework.stereotype.Service
 
 @Service

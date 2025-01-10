@@ -1,0 +1,17 @@
+{
+    "jsonkey": "SPIRITUAL",
+    "data":[
+        {
+            "id": 1,
+            "name": "Wahrnehmung"
+        },
+        {
+            "id": 2,
+            "name": "Intelligenz"
+        },
+        {
+            "id" : 3,
+            "name": "Geistesschärfe"
+        }
+    ]
+}

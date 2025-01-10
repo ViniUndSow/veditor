@@ -1,0 +1,45 @@
+{
+  "jsonkey": "KNOWLEDGE",
+  "data":[
+    {
+      "id": 1,
+      "name": "Akadem. Wissen"
+    },
+    {
+      "id": 2,
+      "name": "Computer"
+    },
+    {
+      "id": 3,
+      "name": "Finanzielles"
+    },
+    {
+      "id": 4,
+      "name": "Gesetzeskenntnis"
+    },
+    {
+      "id": 5,
+      "name": "Linguistik"
+    },
+    {
+      "id": 6,
+      "name": "Medizin"
+    },
+    {
+      "id": 7,
+      "name": "Nachforschung"
+    },
+    {
+      "id": 8,
+      "name": "Naturwissensch."
+    },
+    {
+      "id": 9,
+      "name": "Okkultismus"
+    },
+    {
+      "id": 10,
+      "name": "Politik"
+    }
+  ]
+}

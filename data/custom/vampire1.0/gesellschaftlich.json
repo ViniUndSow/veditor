@@ -1,0 +1,17 @@
+{
+  "jsonkey": "SOCIAL",
+  "data":[
+    {
+      "id": 1,
+      "name": "Charisma"
+    },
+    {
+      "id": 2,
+      "name": "Manipulation"
+    },
+    {
+      "id" : 3,
+      "name": "Erscheinungsbild"
+    }
+  ]
+}

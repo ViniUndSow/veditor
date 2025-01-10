@@ -1,4 +1,4 @@
-package com.prasse.veditor
+package com.prasse.veditor.service
 
 import com.prasse.veditor.files.JsonService
 import com.prasse.veditor.model.Clan

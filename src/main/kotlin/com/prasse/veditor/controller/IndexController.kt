@@ -1,6 +1,13 @@
-package com.prasse.veditor
+package com.prasse.veditor.controller
 
 import com.prasse.veditor.files.JsonService
+import com.prasse.veditor.service.*
+import com.prasse.veditor.service.attributes.GeistigService
+import com.prasse.veditor.service.attributes.PhysicalService
+import com.prasse.veditor.service.attributes.SocialService
+import com.prasse.veditor.service.skills.FertigkeitenService
+import com.prasse.veditor.service.skills.KnowledgeService
+import com.prasse.veditor.service.skills.TalentService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,17 +20,25 @@ class IndexController(
     val talentService: TalentService,
     val desciplineService: DesciplineService,
     val jsonService: JsonService,
-    val fertigkeitenService: FertigkeitenService
+    val fertigkeitenService: FertigkeitenService,
+    private val geistigService: GeistigService,
+    private val socialService: SocialService,
+    private val physicalService: PhysicalService,
+    private val knowledgeService: KnowledgeService
 ) {
 
     @GetMapping("/")
     fun index(model: Model): String {
-
+        //Attribute
+        model.addAttribute("spiritual", geistigService.load())
+        model.addAttribute("socials", socialService.load())
+        model.addAttribute("physical", physicalService.load())
         model.addAttribute("siteTitle", "Editor")
         model.addAttribute("clans", clanLoaerService.loadClans())
         model.addAttribute("disciplines", desciplineService.loadTalents())
         model.addAttribute("maxDisciplines", 8)
-        // Attributes
+        // Fähigkeiten
+        model.addAttribute("knowledge", knowledgeService.loadSkills())
         model.addAttribute("talente", talentService.loadTalents())
         model.addAttribute("skills", fertigkeitenService.loadSkills())
         return "index"

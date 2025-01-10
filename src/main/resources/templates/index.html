@@ -100,19 +100,42 @@
                 <div class="row">
                     <h3 class="text-center">Körperlich</h3>
                 </div>
+                <div class="row" th:each="physicalSkill: ${physical['vampire1.0']}" style="margin-bottom: 3px;">
+                    <div class="col-6">
+                        <p th:text="${physicalSkill.name}" />
+                    </div>
+                    <div class="col-6">
+                        <input type="range" class="form-range" min="0" max="5">
+                    </div>
+                </div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Gesellschaftlich</h3>
+                </div>
+                <div class="row" th:each="socialSkill: ${socials['vampire1.0']}" style="margin-bottom: 3px;">
+                    <div class="col-6">
+                        <p th:text="${socialSkill.name}" />
+                    </div>
+                    <div class="col-6">
+                        <input type="range" class="form-range" min="0" max="5">
+                    </div>
                 </div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Geistig</h3>
                 </div>
+                <div class="row" th:each="spiritualSkill: ${spiritual['vampire1.0']}" style="margin-bottom: 3px;">
+                    <div class="col-6">
+                        <p th:text="${spiritualSkill.name}" />
+                    </div>
+                    <div class="col-6">
+                        <input type="range" class="form-range" min="0" max="5">
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
     <!--Fähigkeiten-->
     <div class="container">
@@ -132,40 +155,19 @@
                 <div class="row">
                     <h3 class="text-center">Talente</h3>
                 </div>
-                <div class="row" th:each="talent: ${talente['vampire1.0']}" style="margin-bottom: 3px;">
-                    <div class="col-6">
-                        <p th:text="${talent.name}" />
-                    </div>
-                    <div class="col-6">
-                        <input type="range" class="form-range" min="0" max="5">
-                    </div>
-                </div>
+                <div th:replace="~{fragments/skillWithSlider(${talente['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Fertigkeiten</h3>
                 </div>
-                <div class="row" th:each="fertigkeit: ${skills['vampire1.0']}" style="margin-bottom: 3px;">
-                    <div class="col-6">
-                        <p th:text="${fertigkeit.name}" />
-                    </div>
-                    <div class="col-6">
-                        <input type="range" class="form-range" min="0" max="5">
-                    </div>
-                </div>
+                <div th:replace="~{fragments/skillWithSlider(${skills['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Kenntnisse</h3>
                 </div>
-                <div class="row" th:each="kenntniss: ${kenntnisse}" style="margin-bottom: 3px;">
-                    <div class="col-6">
-                        <p th:text="${kenntniss.name}" />
-                    </div>
-                    <div class="col-6">
-                        <input type="number">
-                    </div>
-                </div>
+                <div th:replace="~{fragments/skillWithSlider(${knowledge['vampire1.0']})}"></div>
             </div>
         </div>
     </div>
