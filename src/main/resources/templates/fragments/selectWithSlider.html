@@ -1,14 +1,14 @@
 <div th:fragment="selectWithSlider(listOfSkills, selectId, labelData, disabled)">
     <div class="row">
         <div class="form-floating col-9">
-            <select th:id="${selectId}" th:name="${selectId}" class="form-select" style="margin-bottom: 1%" ${disabled}>
+            <select th:id="${selectId}" th:name="${selectId}" class="form-select" style="margin-bottom: 1%" th:disabled="${disabled}">
                 <option selected value="null">----</option>
                 <div th:each="skill : ${listOfSkills}">
                     <option th:value="${skill.id}"
                             th:text="${skill.name}"></option>
                 </div>
             </select>
-            <label th:for="${selectId}" class="form-label">${labelData}
+            <label th:for="${selectId}" class="form-label" th:text="${labelData}">
             </label>
         </div>
         <div class="col-3">

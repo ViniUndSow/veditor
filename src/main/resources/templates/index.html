@@ -100,40 +100,19 @@
                 <div class="row">
                     <h3 class="text-center">Körperlich</h3>
                 </div>
-                <div class="row" th:each="physicalSkill: ${physical['vampire1.0']}" style="margin-bottom: 3px;">
-                    <div class="col-6">
-                        <p th:text="${physicalSkill.name}" />
-                    </div>
-                    <div class="col-6">
-                        <input type="range" class="form-range" min="0" max="5">
-                    </div>
-                </div>
+                <div th:replace="~{fragments/skillWithSlider(${physical['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Gesellschaftlich</h3>
                 </div>
-                <div class="row" th:each="socialSkill: ${socials['vampire1.0']}" style="margin-bottom: 3px;">
-                    <div class="col-6">
-                        <p th:text="${socialSkill.name}" />
-                    </div>
-                    <div class="col-6">
-                        <input type="range" class="form-range" min="0" max="5">
-                    </div>
-                </div>
+                <div th:replace="~{fragments/skillWithSlider(${socials['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Geistig</h3>
                 </div>
-                <div class="row" th:each="spiritualSkill: ${spiritual['vampire1.0']}" style="margin-bottom: 3px;">
-                    <div class="col-6">
-                        <p th:text="${spiritualSkill.name}" />
-                    </div>
-                    <div class="col-6">
-                        <input type="range" class="form-range" min="0" max="5">
-                    </div>
-                </div>
+                <div th:replace="~{fragments/skillWithSlider(${spiritual['vampire1.0']})}"></div>
             </div>
         </div>
     </div>
@@ -193,48 +172,9 @@
             <div class="col-4">
                     <h3 class="text-center">Disziplinen</h3>
                     <div id="clanDisciplines">
-                        <div class="row">
-                            <div class="form-floating col-9">
-                                <select id="clanDisciplineFixed0" th:name="${clanDisciplineFixed0}" class="form-select" style="margin-bottom: 1%" disabled>
-                                    <option selected value="null">----</option>
-                                    <div th:each="disciline : ${disciplines['vampire1.0']}">
-                                        <option th:value="${disciline.id}"
-                                                th:text="${disciline.name}"></option>
-                                    </div>
-                                </select> <label for="clanDisciplineFixed0" class="form-label">Clan 1:</label>
-                            </div>
-                            <div class="col-3">
-                                <input type="range" class="form-range" min="0" max="5">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-floating col-9">
-                                <select id="clanDisciplineFixed1" th:name="${clanDisciplineFixed1}" class="form-select" style="margin-bottom: 1%" disabled>
-                                    <option selected value="null">----</option>
-                                    <div th:each="disciline : ${disciplines['vampire1.0']}">
-                                        <option th:value="${disciline.id}"
-                                                th:text="${disciline.name}"></option>
-                                    </div>
-                                </select> <label for="clanDisciplineFixed1" class="form-label">Clan 2:</label>
-                            </div>
-                            <div class="col-3">
-                                <input type="range" class="form-range" min="0" max="5">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-floating col-9">
-                                <select id="clanDisciplineFixed2" th:name="${clanDisciplineFixed2}" class="form-select" style="margin-bottom: 1%" disabled>
-                                    <option selected value="null">----</option>
-                                    <div th:each="disciline : ${disciplines['vampire1.0']}">
-                                        <option th:value="${disciline.id}"
-                                                th:text="${disciline.name}"></option>
-                                    </div>
-                                </select> <label for="clanDisciplineFixed2" class="form-label">Clan 3:</label>
-                            </div>
-                            <div class="col-3">
-                                <input type="range" class="form-range" min="0" max="5">
-                            </div>
-                        </div>
+                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed0', 'Clan 1:', true)}"></div>
+                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed1', 'Clan 2:', true)}"></div>
+                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed2', 'Clan 3:', true)}"></div>
                     </div>
                     <div id="additionalDisciplnes">
 
