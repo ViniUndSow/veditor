@@ -1,0 +1,12 @@
+<div th:fragment="selectOnly(selectData, selectId, labelText, additionalColClass)"
+     th:class="${additionalColClass.concat(' form-floating')}">
+    <select th:id="${selectId}" th:name="${selectId}" class="form-select" style="margin-bottom: 1%">
+        <option selected value="null">----</option>
+        <div th:each="data : ${selectData}">
+            <option th:value="${data.id}"
+                    th:text="${data.name}"></option>
+        </div>
+    </select>
+    <label th:for="${selectId}" class="form-label" th:text="${labelText.concat(':')}">
+    </label>
+</div>
