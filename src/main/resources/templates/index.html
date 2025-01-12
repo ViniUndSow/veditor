@@ -10,64 +10,61 @@
         </div>
     </nav>
     <div class="container" data-bs-theme="light" style="margin-bottom: 1%">
+        <div th:replace="~{fragments/sectionHeadline('Allgemeines')}"/>
+        <div class="row col-12">
+            <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'regelauswahl','Regelauswahl','col-12')}"/>
+        </div>
+        <div class="row col-12">
+            <div th:replace="~{fragments/textinputOnly('spielername','Spielername','col-6')}"/>
+            <div th:replace="~{fragments/textinputOnly('chronik','Chronik:','col-6')}"/>
+        </div>
     </div>
     <!-- Container Charakter Daten -->
     <div class="container" data-bs-theme="light" style="margin-bottom: 1%">
-        <div th:replace="~{fragments/sectionHeadline('Allgemeines')}"/>
-        <div class="row" style="margin-bottom: 1%">
-            <div class="col-12 form-floating">
-                <select id="clanInput" th:name="${clanInput}" class="form-select col-12" th:onchange="changeClanData()">
-                    <option value="null">Bitte auswählen</option>
-                    <option th:each="clan : ${clans['vampire1.0']}" th:value="${clan.id}"
-                            th:text="${clan.name}"></option>
-                </select> <label for="clanInput">Clan:</label>
-            </div>
-        </div>
-        <!-- Reihe 1 -->
-        <div class="row" style="margin-bottom: 1%">
-            <div class="col-4">
-                <div class="form-floating">
-                    <input type="text"
-                           id="characterNameInput"
-                           name="characterNameInput"
-                           class="form-control"> <label for="characterNameInput">Charaktername:</label>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="chronik"> <label for="chronik">Chronik:</label>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-floating">
-                    <input type="number" class="form-control" id="generation"> <label for="generation">Generation:</label>
-                </div>
-            </div>
-        </div>
-        <!-- Reihe 2 -->
-        <div class="row" style="margin-bottom: 1%">
-            <div class="col-6">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="wesen"> <label for="wesen">Wesen:</label>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-floating">
-                    <input type="number" class="form-control" id="zuflucht"> <label for="zuflucht">Zuflucht:</label>
-                </div>
-            </div>
-        </div>
+        <div th:replace="~{fragments/sectionHeadline('Charakter Details')}"/>
         <div class="row">
-            <div class="col-4">
-                <!-- Links -->
-                <div>
-                    <div>
-
+            <div class="col-6">
+                <div class="row">
+                    <h3 class="text-center">Charakterlich</h3>
+                </div>
+                <div class="row col-12" style="margin-bottom: 1%">
+                    <div th:replace="~{fragments/textinputOnly('chracterName','Chraktername','col-9')}"/>
+                    <div class="col-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="exp"> <label for="exp">Erfahrungspunkte:</label>
+                        </div>
                     </div>
                 </div>
-                <!-- Mitte -->
-                <!-- Rechts -->
-                <div class="col-4">
+                <div class="row col-12" style="margin-bottom: 1%">
+                    <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'wesen','Wesen','col-6')}"/>
+                    <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'verhalten','Verhalten','col-6')}"/>
+                </div>
+                <div class="row col-12" style="margin-bottom: 1%">
+                    <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'konzept','Konzept','col-5')}"/>
+                    <div th:replace="~{fragments/textinputOnly('erzeuger','Erzeuger','col-5')}"/>
+                    <div class="col-2">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="generation"> <label for="generation">Generat.:</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <h3 class="text-center">Umstände</h3>
+                    <div class="row" style="margin-bottom: 1%">
+                        <div class="col-6 form-floating">
+                            <select id="clanInput" th:name="${clanInput}" class="form-select col-12" th:onchange="changeClanData()">
+                                <option value="null">Bitte auswählen</option>
+                                <option th:each="clan : ${clans['vampire1.0']}" th:value="${clan.id}"
+                                        th:text="${clan.name}"></option>
+                            </select> <label for="clanInput">Clan:</label>
+                        </div>
+                        <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'sekte','Sekte','col-6')}"/>
+                    </div>
+                </div>
+                <div class="row col-12">
+                    <div th:replace="~{fragments/textinputOnly('zuflucht', 'Zuflucht', 'col-12')}"/>
                 </div>
             </div>
         </div>
@@ -81,19 +78,19 @@
                 <div class="row">
                     <h3 class="text-center">Körperlich</h3>
                 </div>
-                <div th:replace="~{fragments/skillWithSlider(${physical['vampire1.0']})}"></div>
+                <div th:replace="~{fragments/textWithSlider(${physical['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Gesellschaftlich</h3>
                 </div>
-                <div th:replace="~{fragments/skillWithSlider(${socials['vampire1.0']})}"></div>
+                <div th:replace="~{fragments/textWithSlider(${socials['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Geistig</h3>
                 </div>
-                <div th:replace="~{fragments/skillWithSlider(${spiritual['vampire1.0']})}"></div>
+                <div th:replace="~{fragments/textWithSlider(${spiritual['vampire1.0']})}"></div>
             </div>
         </div>
     </div>
@@ -105,19 +102,19 @@
                 <div class="row">
                     <h3 class="text-center">Talente</h3>
                 </div>
-                <div th:replace="~{fragments/skillWithSlider(${talente['vampire1.0']})}"></div>
+                <div th:replace="~{fragments/textWithSlider(${talente['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Fertigkeiten</h3>
                 </div>
-                <div th:replace="~{fragments/skillWithSlider(${skills['vampire1.0']})}"></div>
+                <div th:replace="~{fragments/textWithSlider(${skills['vampire1.0']})}"></div>
             </div>
             <div class="col-4">
                 <div class="row">
                     <h3 class="text-center">Kenntnisse</h3>
                 </div>
-                <div th:replace="~{fragments/skillWithSlider(${knowledge['vampire1.0']})}"></div>
+                <div th:replace="~{fragments/textWithSlider(${knowledge['vampire1.0']})}"></div>
             </div>
         </div>
     </div>
@@ -134,9 +131,9 @@
             <div class="col-4">
                     <h3 class="text-center">Disziplinen</h3>
                     <div id="clanDisciplines">
-                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed0', 'Clan 1:', true)}"></div>
-                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed1', 'Clan 2:', true)}"></div>
-                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed2', 'Clan 3:', true)}"></div>
+                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed0', 'Clan 1', true)}"></div>
+                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed1', 'Clan 2', true)}"></div>
+                        <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed2', 'Clan 3', true)}"></div>
                     </div>
                     <div id="additionalDisciplnes">
 
