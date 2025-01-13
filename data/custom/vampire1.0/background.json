@@ -1,17 +1,23 @@
 {
     "jsonkey": "BACKGROUND",
-    "data": [
-        {
-            "id": 1,
-            "name": "Alter"
-        },
-        {
-            "id": 2,
-            "name": "Status"
-        },
-        {
-            "id": 3,
-            "name": "Ruhm"
-        }
+    "names": [
+        "Ahnenstatus",
+        "Alter",
+        "Deckidentität",
+        "Einfluss",
+        "Gefolgsleute",
+        "Gefolgsleute (x)",
+        "Generation",
+        "Grundbesitz",
+        "Herde",
+        "Kontakte",
+        "Mentor",
+        "Ressourcen",
+        "Rituale",
+        "Ruhm",
+        "Sabbatstatus",
+        "Status",
+        "Streitkräfte",
+        "Verbündete"
     ]
 }

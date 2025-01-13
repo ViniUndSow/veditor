@@ -24,7 +24,80 @@
             "Freundliches Gesicht",
             "Frühaufsteher",
             "Führungstalent",
-            "Geborener Führer"
+            "Geborener Führer",
+            "Gefallen",
+            "Geschärfte Sinne",
+            "Gesunder Menschenverstand",
+            "Guter Geschmackssinn",
+            "Gutes Gehör",
+            "Gutes Geruchsvermögen",
+            "Gutes Sehvermögen",
+            "Harmlos",
+            "Harmlos für Tiere",
+            "Heilende Berührung",
+            "Herrschaft über ein Elysium",
+            "Innenschau",
+            "Katzenhaftes Gleichgewicht",
+            "Kirchlicher Rang",
+            "Konzentration",
+            "Magiegespür",
+            "Mechanische Begabung",
+            "Nützliches Kenntnis",
+            "Protege",
+            "Rechengenie",
+            "Ruf",
+            "Schläger",
+            "Schlangenmensch",
+            "Sichere Reise",
+            "Stammgast im Elysium",
+            "Sterndeuter",
+            "Stille",
+            "Student",
+            "Täuschende Aura",
+            "Überlebender des Sabbat",
+            "Unternehmer",
+            "Wertvolles Gehemnis",
+            "Zeitgefühl",
+            "Zuneigung zu Tieren"
+        ]
+      },
+      {
+        "cost":2,
+        "names":[]
+      },
+      {
+        "cost":3,
+        "names":[]
+      },
+      {
+        "cost":4,
+        "names":[]
+      },
+      {
+        "cost":5,
+        "names":[]
+      },
+      {
+        "cost":6,
+        "names":[
+          "Fähiger Assistent",
+          "Gefallen",
+          "Neun Leben",
+          "Schutzengel"
+        ]
+      },
+      {
+        "cost": 7,
+        "names": [
+          "Erstgeborener",
+          "Wahrer Glaube"
+        ]
+      },
+      {
+        "cost": 10,
+        "names": [
+          "Angesehener Erzeuger",
+          "Geschärfte Sinne"
         ]
       }
     ]

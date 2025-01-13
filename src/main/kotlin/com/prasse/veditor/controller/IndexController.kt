@@ -27,6 +27,7 @@ class IndexController(
         model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE"))
         model.addAttribute("tugenden", jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN))
         model.addAttribute("maxDisciplines", 8)
+        model.addAttribute("background", jsonLoader.loadDataWithDefault(JsonLoader.BACKGROUND))
         // Fähigkeiten
 
         model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE"))

@@ -15,6 +15,7 @@ class JsonLoader(
     companion object KEYS {
         const val CLAN = "CLANS"
         const val TUGENDEN = "TUGENDEN"
+        const val BACKGROUND = "BACKGROUND"
     }
 
     fun loadDataWithDefault(jsonKey: String): Map<String, List<BasicJsonObject>> {
@@ -30,6 +31,9 @@ class JsonLoader(
             return when (jsonKey) {
                 CLAN -> {
                     loadClan(files = talentFiles, name = name) as Map<String, List<T>>
+                }
+                BACKGROUND -> {
+                    loadListData(talentFiles,name = name) as Map<String, List<T>>
                 }
                 TUGENDEN -> {
                     loadTugend(files = talentFiles, name = name) as Map<String, List<T>>
@@ -102,6 +106,22 @@ class JsonLoader(
         files.forEach { singleFile ->
             singleFile.get("data").map { jsonInput ->
                 val inputName = jsonInput.get("name").textValue()
+                outputData.add(BasicJsonObject(id = getId(inputName), name = inputName))
+            }
+        }
+        outputMap[name] = outputData
+        return outputMap
+    }
+
+    private fun loadListData(
+        files: List<JsonNode>,
+        name: String,
+    ): MutableMap<String, List<BasicJsonObject>> {
+        val outputMap = mutableMapOf<String, List<BasicJsonObject>>()
+        val outputData = mutableListOf<BasicJsonObject>()
+        files.forEach { singleFile ->
+            singleFile.get("names").map { jsonInput ->
+                val inputName = jsonInput.textValue()
                 outputData.add(BasicJsonObject(id = getId(inputName), name = inputName))
             }
         }
