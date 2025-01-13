@@ -1,8 +1,8 @@
 package com.prasse.veditor.model
 
 class Clan(
-    val id: Int,
-    val name: String,
     val disciplines: List<Int>,
-    val weakness: String
-)
+    val weakness: String,
+    id: Int,
+    name: String,
+) : BasicJsonObject(id, name)

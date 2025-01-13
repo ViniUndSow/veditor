@@ -1,34 +1,48 @@
 {
-  "jsonkey": "TUGEND",
-  "tugend1": [
+  "jsonkey": "TUGENDEN",
+  "data": [
     {
+      "name": "tugend1",
       "id": 1,
-      "name": "Bestialität"
-    },{
-      "id": 2,
-      "name": "Gewissen"
-    }, {
-      "id": 3,
-      "name": "Überzeugung"
-    }
-  ],
-  "tugend2": [
-    {
-      "id": 1,
-      "name": "Instinkt"
-    }, {
-      "id": 2,
-      "name": "Selbstbeherrschung"
-    }
-  ],
-  "tugend3": [
-    {
-      "id": 1,
-      "name": "Moral"
+      "data": [
+        {
+          "id": 1,
+          "name": "Bestialität"
+        },{
+          "id": 2,
+          "name": "Gewissen"
+        }, {
+          "id": 3,
+          "name": "Überzeugung"
+        }
+      ]
     },
     {
+      "name": "tugend2",
       "id": 2,
-      "name": "Wut"
+      "data": [
+        {
+          "id": 1,
+          "name": "Instinkt"
+        }, {
+          "id": 2,
+          "name": "Selbstbeherrschung"
+        }
+      ]
+    },
+    {
+      "name": "tugend3",
+      "id": 3,
+      "data": [
+        {
+          "id": 1,
+          "name": "Moral"
+        },
+        {
+          "id": 2,
+          "name": "Wut"
+        }
+      ]
     }
   ]
 }

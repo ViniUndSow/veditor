@@ -1,13 +1,9 @@
 package com.prasse.veditor.controller
 
 import com.prasse.veditor.files.JsonService
+import com.prasse.veditor.model.Clan
+import com.prasse.veditor.model.Tugenden
 import com.prasse.veditor.service.*
-import com.prasse.veditor.service.attributes.GeistigService
-import com.prasse.veditor.service.attributes.PhysicalService
-import com.prasse.veditor.service.attributes.SocialService
-import com.prasse.veditor.service.skills.FertigkeitenService
-import com.prasse.veditor.service.skills.KnowledgeService
-import com.prasse.veditor.service.skills.TalentService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,40 +12,45 @@ import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
 class IndexController(
-    val clanLoaerService: ClanLoaderService,
-    val talentService: TalentService,
-    val desciplineService: DesciplineService,
     val jsonService: JsonService,
-    val fertigkeitenService: FertigkeitenService,
-    private val geistigService: GeistigService,
-    private val socialService: SocialService,
-    private val physicalService: PhysicalService,
-    private val knowledgeService: KnowledgeService
+    val jsonLoader: JsonLoader
 ) {
 
     @GetMapping("/")
     fun index(model: Model): String {
         //Attribute
-        model.addAttribute("spiritual", geistigService.load())
-        model.addAttribute("socials", socialService.load())
-        model.addAttribute("physical", physicalService.load())
+        model.addAttribute("spiritual", jsonLoader.loadDataWithDefault("SPIRITUAL"))
+        model.addAttribute("socials", jsonLoader.loadDataWithDefault("SOCIAL"))
+        model.addAttribute("physical", jsonLoader.loadDataWithDefault("PHYSICAL"))
         model.addAttribute("siteTitle", "Editor")
-        model.addAttribute("clans", clanLoaerService.loadClans())
-        model.addAttribute("disciplines", desciplineService.loadTalents())
+        model.addAttribute("clans", jsonLoader.loadData<Clan>(JsonLoader.CLAN))
+        model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE"))
+        model.addAttribute("tugenden", jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN))
         model.addAttribute("maxDisciplines", 8)
         // Fähigkeiten
-        model.addAttribute("knowledge", knowledgeService.loadSkills())
-        model.addAttribute("talente", talentService.loadTalents())
-        model.addAttribute("skills", fertigkeitenService.loadSkills())
+
+        model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE"))
+        model.addAttribute("talente", jsonLoader.loadDataWithDefault("TALENTS"))
+        model.addAttribute("skills", jsonLoader.loadDataWithDefault("SKILLS"))
         return "index"
     }
+
+
 
     @PostMapping("/")
     fun reload(model: Model): String {
         jsonService.loadAllJsonFiles()
-        talentService.loadTalents()
-        clanLoaerService.loadClans()
-        desciplineService.loadTalents()
+        jsonLoader.loadDataWithDefault("SPIRITUAL")
+        jsonLoader.loadDataWithDefault("SOCIAL")
+        jsonLoader.loadDataWithDefault("PHYSICAL")
+        jsonLoader.loadData<Clan>(JsonLoader.CLAN)
+        jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN)
+        jsonLoader.loadDataWithDefault("DISCIPLINE")
+        // Fähigkeiten
+
+        jsonLoader.loadDataWithDefault("KNOWLEDGE")
+        jsonLoader.loadDataWithDefault("TALENTS")
+        jsonLoader.loadDataWithDefault("SKILLS")
 
         return "redirect:/"
     }
@@ -57,7 +58,7 @@ class IndexController(
     @GetMapping("/loadAdditional/disciples/{count}")
     fun loadAdditional(model: Model, @PathVariable("count") count: Int): String {
         model.addAttribute("id", "discipline$count")
-        model.addAttribute("disciplines", desciplineService.loadTalents())
+        model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE"))
         model.addAttribute("name", "discipline$count")
         model.addAttribute("labelName","Diszipline ${count-3}")
         return "fragments/disciples"

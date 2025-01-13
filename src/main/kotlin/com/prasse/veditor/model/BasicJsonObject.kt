@@ -1,6 +1,6 @@
 package com.prasse.veditor.model
 
-class Discipline(
+open class BasicJsonObject(
     val id: Int,
     val name: String
 )
