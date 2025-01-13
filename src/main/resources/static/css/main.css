@@ -26,6 +26,8 @@ body, h1, h2, p, ul, li {
 
 body {
     background-color: white;
+    background-image: url("/static/img/background/mascarate.jpg");
+
 }
 .row > .form-floating > label {
     margin-left:0.75em;

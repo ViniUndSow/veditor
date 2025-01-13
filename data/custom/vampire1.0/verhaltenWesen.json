@@ -1,9 +1,11 @@
 {
     "jsonkey": "BEHAVIOR",
     "data": [
-        {
-            "id": 0,
-            "name": "Abweichler"
-        }
+        "Abweichler",
+        "Architekt",
+        "Autist",
+        "Autokrat",
+        "Avantgardist",
+        "Abweichler"
     ]
 }

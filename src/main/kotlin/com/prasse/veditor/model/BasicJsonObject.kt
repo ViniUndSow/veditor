@@ -1,6 +1,6 @@
 package com.prasse.veditor.model
 
 open class BasicJsonObject(
-    val id: Int,
+    val id: String,
     val name: String
 )

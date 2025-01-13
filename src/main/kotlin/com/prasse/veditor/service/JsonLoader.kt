@@ -52,7 +52,7 @@ class JsonLoader(
         files.forEach { singleFile ->
             singleFile.get("data").map { jsonInput ->
                 listOfClans.add(
-                    Clan(id = jsonInput.get("id").intValue(),
+                    Clan(id = getId(name),
                         name = jsonInput.get("name").textValue(),
                         weakness = jsonInput.get("weakness").textValue(),
                         disciplines = jsonInput.get("discipline").map { it.intValue() }
@@ -73,15 +73,17 @@ class JsonLoader(
         files.forEach { singleFile ->
             singleFile.get("data").map { jsonInput ->
                 val tugendData = jsonInput.get("data").map { td ->
+                    val name = td.get("name").textValue()
                     BasicJsonObject(
-                        id = td.get("id").intValue(),
-                        name = td.get("name").textValue()
+                        id = getId(name),
+                        name = name
                     )
                 }
+                val jsonInputName = jsonInput.get("name").textValue()
                 outputData.add(
                     Tugenden(
-                        id = jsonInput.get("id").intValue(),
-                        name = jsonInput.get("name").textValue(),
+                        id = getId(jsonInputName),
+                        name = jsonInputName,
                         data = tugendData
                     )
                 )
@@ -99,10 +101,15 @@ class JsonLoader(
         val outputData = mutableListOf<BasicJsonObject>()
         files.forEach { singleFile ->
             singleFile.get("data").map { jsonInput ->
-                outputData.add(BasicJsonObject(id = jsonInput.get("id").intValue(), name = jsonInput.get("name").textValue()))
+                val inputName = jsonInput.get("name").textValue()
+                outputData.add(BasicJsonObject(id = getId(inputName), name = inputName))
             }
         }
         outputMap[name] = outputData
         return outputMap
+    }
+
+    private fun getId(name: String): String {
+        return name.replace(" ","_").uppercase()
     }
 }
