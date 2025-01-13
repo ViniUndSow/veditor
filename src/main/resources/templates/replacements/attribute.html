@@ -1,0 +1,23 @@
+<div class="container">
+    <div th:replace="~{fragments/sectionHeadline('Attribute')}"/>
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <h3 class="text-center">Körperlich</h3>
+            </div>
+            <div th:replace="~{fragments/textWithSlider(${physical['vampire1.0']})}"></div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <h3 class="text-center">Gesellschaftlich</h3>
+            </div>
+            <div th:replace="~{fragments/textWithSlider(${socials['vampire1.0']})}"></div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <h3 class="text-center">Geistig</h3>
+            </div>
+            <div th:replace="~{fragments/textWithSlider(${spiritual['vampire1.0']})}"></div>
+        </div>
+    </div>
+</div>

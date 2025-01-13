@@ -1,0 +1,109 @@
+<div class="container">
+<div th:replace="~{fragments/sectionHeadline('Vorteile')}"/>
+
+<div class="row">
+    <div class="col-4">
+        <div class="row">
+            <h3 class="text-center">Hintergrund</h3>
+            <div th:replace="~{fragments/selectWithSlider(${background['vampire1.0']}, 'background', 'Hintergrund', false)}"></div>
+
+        </div>
+    </div>
+    <div class="col-4">
+        <h3 class="text-center">Disziplinen</h3>
+        <div id="clanDisciplines">
+            <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed0', 'Clan 1', true)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed1', 'Clan 2', true)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed2', 'Clan 3', true)}"></div>
+        </div>
+        <div id="additionalDisciplnes">
+
+        </div>
+        <div class="row" id="additionalDisciplnesButtonRow">
+            <div class="col-6">
+                <button type="button" id="addButtonDiscipline" class="btn btn-outline-success col-12" onclick="addAdditionalDiscipline()">
+                    +
+                </button>
+            </div>
+            <div class="col-6">
+                <button type="button" id="subButtonDiscipline" class="btn btn-outline-danger col-12" onclick="removeDisciplie()">
+                    -
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <h3 class="text-center">Tugenden</h3>
+            <div th:replace="~{fragments/selectWithSlider(${tugenden['vampire1.0'].get(0).data}, 'tugend1', 'Tugend 1', false)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${tugenden['vampire1.0'].get(1).data}, 'tugend2', 'Tugend 2', false)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${tugenden['vampire1.0'].get(2).data}, 'tugend3', 'Tugend 3', false)}"></div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+
+    //Buttons
+    const btnDisciplineRemove = document.getElementById("subButtonDiscipline")
+    const btnDisciolineAdd = document.getElementById("addButtonDiscipline")
+
+    $(document).ready(function onready() {
+        if (currentCountOfDisciples === countOfFixedDisciplines) {
+            document.getElementById("subButtonDiscipline").style.display = "none"
+        }
+    });
+
+    function removeDisciplie() {
+        if (currentCountOfDisciples > countOfFixedDisciplines) {
+            // Remove HTML for the Last Skill
+            var lastDiscipline = document.getElementById("discipline" + currentCountOfDisciples);
+            currentCountOfDisciples = currentCountOfDisciples - 1;
+            $(lastDiscipline).remove();
+
+            if (currentCountOfDisciples > countOfFixedDisciplines) {
+                changeButtonVisibility(btnDisciolineAdd, 'block');
+            }
+
+            if (currentCountOfDisciples === countOfFixedDisciplines) {
+                changeButtonVisibility(btnDisciplineRemove, 'none');
+                changeButtonVisibility(btnDisciolineAdd, 'block');
+            }
+        }
+    }
+
+    function changeButtonVisibility(button, visibility) {
+        button.style.display = visibility;
+    }
+
+    function addAdditionalDiscipline() {
+        if (currentCountOfDisciples < maxDisciplines) {
+            currentCountOfDisciples = currentCountOfDisciples + 1;
+
+            const url = '/loadAdditional/disciples/' + currentCountOfDisciples;
+            $.ajax({
+                url: url, // Endpoint returning the rendered fragment
+                method: 'GET',
+                success: function (response) {
+                    // Prepend the rendered HTML
+                    console.log(response)
+                    $("#additionalDisciplnes").append(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error loading fragment: ", error);
+                }
+            });
+
+            if (currentCountOfDisciples > countOfFixedDisciplines) {
+                changeButtonVisibility(btnDisciolineAdd, 'block');
+                changeButtonVisibility(btnDisciplineRemove, 'block');
+            }
+
+            if (currentCountOfDisciples === maxDisciplines) {
+                changeButtonVisibility(btnDisciolineAdd, 'none');
+            }
+        }
+
+    }
+
+</script>
