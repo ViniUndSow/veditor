@@ -13,7 +13,7 @@ class JsonLoader(
 ) {
 
     companion object KEYS {
-        const val CLAN = "CLAN"
+        const val CLAN = "CLANS"
         const val TUGENDEN = "TUGENDEN"
     }
 
