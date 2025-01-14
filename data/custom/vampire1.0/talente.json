@@ -1,46 +1,15 @@
 {
   "jsonkey": "TALENTS",
-  "data":[
-    {
-      "id": 1,
-      "name": "Aufmerksamkeit"
-    },
-    {
-      "id": 2,
-      "name": "Ausdruck"
-    },
-    {
-      "id" : 3,
-      "name": "Ausflüchte"
-    },
-    {
-      "id" : 4,
-      "name": "Ausweichen"
-    },
-    {
-      "id":5,
-      "name": "Einschüchtern"
-    },
-    {
-      "id":6,
-      "name": "Empathie"
-    },
-    {
-      "id":7,
-      "name": "Führungsqualitäten"
-    },
-    {
-      "id":8,
-      "name": "Handgemenge"
-    },
-    {
-      "id":9,
-      "name": "Sportliches"
-    },
-    {
-      "id":10,
-      "name": "Szenekenntnis"
-    }
-
+  "names": [
+    "Aufmerksamkeit",
+    "Ausdruck",
+    "Ausflüchte",
+    "Ausweichen",
+    "Einschüchtern",
+    "Empathie",
+    "Führungsqualitäten",
+    "Handgemenge",
+    "Sportliches",
+    "Szenekenntnis"
   ]
 }

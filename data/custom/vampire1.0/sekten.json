@@ -1,5 +1,13 @@
 {
   "jsonkey": "SECT",
-  "data": [
+  "names": [
+    "Anarchen",
+    "Camarilla",
+    "Die Vergessenen",
+    "DSH",
+    "GDN",
+    "Jünger Seth",
+    "Sabbat",
+    "Schwarze Hand"
   ]
 }

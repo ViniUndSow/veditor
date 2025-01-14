@@ -16,6 +16,9 @@ class JsonLoader(
         const val CLAN = "CLANS"
         const val TUGENDEN = "TUGENDEN"
         const val BACKGROUND = "BACKGROUND"
+        const val SEKTE = "SECT"
+        const val TALENTE = "TALENTS"
+        const val FERTIGKEITEN = "SKILLS"
     }
 
     fun loadDataWithDefault(jsonKey: String): Map<String, List<BasicJsonObject>> {
@@ -32,7 +35,7 @@ class JsonLoader(
                 CLAN -> {
                     loadClan(files = talentFiles, name = name) as Map<String, List<T>>
                 }
-                BACKGROUND -> {
+                BACKGROUND, SEKTE, TALENTE, FERTIGKEITEN -> {
                     loadListData(talentFiles,name = name) as Map<String, List<T>>
                 }
                 TUGENDEN -> {

@@ -1,30 +1,11 @@
 {
-    "jsonkey": "SKILLS",
-    "data":[
-        {
-            "id": 1,
-            "name": "Fahren"
-        },
-        {
-            "id": 2,
-            "name": "Handwerk"
-        },
-        {
-            "id" : 3,
-            "name": "Vortrag"
-        },
-        {
-            "id" : 4,
-            "name": "Nahkampf"
-        },
-        {
-            "id":5,
-            "name": "Schusswaffen"
-        },
-        {
-            "id":6,
-            "name": "Sicherheit"
-        }
-
-    ]
+  "jsonkey": "SKILLS",
+  "names": [
+    "Fahren",
+    "Handwerk",
+    "Vortrag",
+    "Nahkampf",
+    "Schusswaffen",
+    "Sicherheit"
+  ]
 }
