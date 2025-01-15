@@ -15,8 +15,8 @@
             <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'regelauswahl','Regelauswahl','col-12')}"/>
         </div>
         <div class="row col-12">
-            <div th:replace="~{fragments/textinputOnly('spielername','Spielername','col-6')}"/>
-            <div th:replace="~{fragments/textinputOnly('chronik','Chronik:','col-6')}"/>
+            <div th:replace="~{fragments/input :: input(type='text', id='spielername', label='Spielername', col='col-6')}"></div>
+            <div th:replace="~{fragments/input :: input(type='text', id='chronik', label='Chronik', col='col-6')}"/>
         </div>
     </div>
     <!-- Container Charakter Daten -->
@@ -28,7 +28,7 @@
                     <h3 class="text-center">Charakterlich</h3>
                 </div>
                 <div class="row col-12" style="margin-bottom: 1%">
-                    <div th:replace="~{fragments/textinputOnly('chracterName','Chraktername','col-9')}"/>
+                    <div th:replace="~{fragments/input :: input(type='text', id='chracterName',label='Chraktername',col='col-9')}"/>
                     <div class="col-3">
                         <div class="form-floating">
                             <input type="number" class="form-control" id="exp"> <label for="exp">Erfahrungspunkte:</label>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="row col-12" style="margin-bottom: 1%">
                     <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'konzept','Konzept','col-5')}"/>
-                    <div th:replace="~{fragments/textinputOnly('erzeuger','Erzeuger','col-5')}"/>
+                    <div th:replace="~{fragments/input :: input(type='text',id='erzeuger',label='Erzeuger',col='col-5')}"/>
                     <div class="col-2">
                         <div class="form-floating">
                             <input type="number" class="form-control" id="generation"> <label for="generation">Generat.:</label>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="row col-12">
-                    <div th:replace="~{fragments/textinputOnly('zuflucht', 'Zuflucht', 'col-12')}"/>
+                    <div th:replace="~{fragments/input:: input(type='text',id='zuflucht',label='Zuflucht',col='col-12')}"/>
                 </div>
             </div>
         </div>
@@ -76,6 +76,8 @@
     <div th:replace="~{replacements/faehigkeiten}"/>
     <!-- Vorteile -->
     <div th:replace="~{replacements/vorteile}"/>
+    <!-- Aussehen -->
+    <div th:replace="~{replacements/aussehen}"/>
     <!-- Buttons -->
     <div class="container">
         <button class="btn btn-dark" type="submit">Speichern</button>

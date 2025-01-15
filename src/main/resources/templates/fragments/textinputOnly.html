@@ -1,5 +1,0 @@
-<div th:fragment="selectOnly(inputId, labelText, additionalColClass)"
-     th:class="${additionalColClass.concat(' form-floating')}">
-    <input type="text" th:id="${inputId}" th:name="${inputId}" class="form-control" style="margin-bottom: 1%"/>
-    <label th:for="${inputId}" class="form-label" th:text="${labelText.concat(':')}"/>
-</div>

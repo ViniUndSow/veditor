@@ -1,0 +1,5 @@
+<div th:fragment="input(type, id, label, col)"
+     th:class="${col.concat(' form-floating')}">
+    <input th:type="${type}" th:id="${id}" th:name="${id}" class="form-control" style="margin-bottom: 1%"/>
+    <label th:for="${id}" class="form-label" th:text="${label.concat(':')}"/>
+</div>
