@@ -1,10 +1,12 @@
 <div th:fragment="skillWithSlider(listOfSkills)">
 <div class="row" th:each="skill: ${listOfSkills}" style="margin-bottom: 3px;">
         <div class="col-6">
-            <p th:text="${skill.name}" />
+            <p th:text="${skill.name}"></p>
         </div>
         <div class="col-6">
-            <input type="range" class="form-range" min="0" max="5">
+            <label>
+                <input th:name="${skill.name}" type="range" class="form-range" min="0" max="5">
+            </label>
         </div>
     </div>
 </div>

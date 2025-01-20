@@ -1,0 +1,45 @@
+<div class="row">
+    <h3 class="text-center">Gesundheit</h3>
+</div>
+<progress id="hpBar" class="progress-bar row col-12" value="15" max="15" style="margin-bottom: 1%"></progress>
+<div id="dmgBtns" class="row col-12">
+    <div class="row" style="margin-bottom: 1%">
+        <div class="col-6">
+            <a class="btn btn-dark col-12">Blaue Flecken ()</a>
+        </div>
+        <div class="col-6">
+            <div th:replace="~{fragments/input :: input(type='number', id='dmgInput', label='Blaue Flecken x', col='')}"/>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 1%">
+        <div class="col-6">
+            <a class="btn btn-dark col-12" onclick="update(1)">Verletzt (-1)</a>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-dark col-12" onclick="update(1)">Schwer verletzt (-1)</a>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 1%">
+        <div class="col-6">
+            <a class="btn btn-dark col-12" onclick="update(2)">Verwundet (-2)</a>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-dark col-12" onclick="update(2)">Schwer verwundet (-2)</a>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 1%">
+        <div class="col-6">
+            <a class="btn btn-dark col-12" onclick="update(5)">Verkrüppelt(-5)</a>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-dark col-12">Außer gefecht ()</a>
+        </div>
+    </div>
+</div>
+<script id="dmgBtnsFunctions">
+    const hpBar = document.getElementById("hpBar")
+
+    function update(dmg) {
+        hpBar.value = (hpBar.value - dmg)
+    }
+</script>

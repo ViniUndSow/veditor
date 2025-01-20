@@ -4,6 +4,7 @@ import com.prasse.veditor.files.JsonService
 import com.prasse.veditor.model.Clan
 import com.prasse.veditor.model.Tugenden
 import com.prasse.veditor.service.*
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,6 +20,7 @@ class IndexController(
     @GetMapping("/")
     fun index(model: Model): String {
         //Attribute
+        model.addAttribute("content", "stats")
         model.addAttribute("spiritual", jsonLoader.loadDataWithDefault("SPIRITUAL"))
         model.addAttribute("socials", jsonLoader.loadDataWithDefault("SOCIAL"))
         model.addAttribute("physical", jsonLoader.loadDataWithDefault("PHYSICAL"))
@@ -33,6 +35,7 @@ class IndexController(
         model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE"))
         model.addAttribute("talente", jsonLoader.loadDataWithDefault(JsonLoader.TALENTE))
         model.addAttribute("skills", jsonLoader.loadDataWithDefault(JsonLoader.FERTIGKEITEN))
+
         return "index"
     }
 
@@ -55,6 +58,8 @@ class IndexController(
 
         return "redirect:/"
     }
+
+
 
     @GetMapping("/loadAdditional/disciples/{count}")
     fun loadAdditional(model: Model, @PathVariable("count") count: Int): String {

@@ -1,14 +1,13 @@
 <div class="row" th:id="${id}">
     <div class="form-floating col-9">
-        <select th:id="${id.concat('Select')}"th:name="${name}" class="form-select" style="margin-bottom: 1%">
+        <select th:id="${id.concat('Select')}" th:name="${name}" class="form-select" style="margin-bottom: 1%">
             <option selected value="null">----</option>
-            <div th:each="disciline : ${disciplines['vampire1.0']}">
-                <option th:value="${disciline.id}"
-                        th:text="${disciline.name}"></option>
-            </div>
-        </select> <label th:for="${id}" th:text="${labelName}"></label>
+            <option th:each="disciline : ${disciplines['vampire1.0']}" th:value="${disciline.id}"
+                th:text="${disciline.name}"></option>
+        </select>
+        <label th:for="${id.concat('Select')}" th:text="${labelName}"></label>
     </div>
     <div class="col-3">
-        <input type="range" class="form-range" min="0" max="5">
+        <input type="range" th:id="${id}" class="form-range" min="0" max="5">
     </div>
 </div>
