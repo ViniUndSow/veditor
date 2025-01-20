@@ -92,6 +92,8 @@
             },
             body: json,
         }).then(response => {return response.text()}).then(responseBody => {
+            var saveToast = document.getElementById('saveToast');
+            new bootstrap.Toast(saveToast).show()
             console.log(responseBody)}
         );
     });

@@ -11,5 +11,11 @@
     </nav>
     <p th:text="${saveMessage}">
     <div th:replace="~{${content}}"></div>
+    <div id="toasts">
+        <div th:replace="~{fragments/saveToast}"/>
+    </div>
 </body>
+
+<script>
+</script>
 </html>

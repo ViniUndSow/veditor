@@ -61,12 +61,5 @@ class IndexController(
 
 
 
-    @GetMapping("/loadAdditional/disciples/{count}")
-    fun loadAdditional(model: Model, @PathVariable("count") count: Int): String {
-        model.addAttribute("id", "discipline$count")
-        model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE"))
-        model.addAttribute("name", "discipline$count")
-        model.addAttribute("labelName","Diszipline ${count-3}")
-        return "fragments/disciples"
-    }
+
 }
