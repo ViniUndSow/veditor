@@ -83,6 +83,7 @@
         event.preventDefault(); // Verhindert den Standardformularversand
         const formData = new FormData(form);
         const json = JSON.stringify(Object.fromEntries(formData));
+        var responseOk;
         console.log(json)
         fetch(form.action, {
             url: saveUrl,
@@ -91,10 +92,18 @@
                 "Content-Type": "application/json",
             },
             body: json,
-        }).then(response => {return response.text()}).then(responseBody => {
-            var saveToast = document.getElementById('saveToast');
-            new bootstrap.Toast(saveToast).show()
-            console.log(responseBody)}
+        })
+        .then(response => {
+            responseOk = response.ok;
+            return response.text()
+        })
+        .then(responseBody => {
+            addSaveToast(responseBody, responseOk).then(resp => {
+                var saveToast = document.getElementById('saveToast');
+                new bootstrap.Toast(saveToast).show()
+                console.log(responseBody)
+            });
+            }
         );
     });
 
@@ -135,6 +144,7 @@
             }
         }
     }
+
 
     /*]]>*/
 </script>

@@ -12,8 +12,9 @@ class FolderService {
 
     companion object {
         val CUSTOM = "data/custom"
+        val CHARACTERS = "data/characters"
     }
-    val listOfFolder = listOf("data", CUSTOM, "data/basic")
+    val listOfFolder = listOf("data", CUSTOM, "data/basic", CHARACTERS)
 
     @PostConstruct
     fun createDataFolder() {
@@ -23,6 +24,6 @@ class FolderService {
                 dataFolder.mkdirs()
             }
         }
-
     }
+
 }

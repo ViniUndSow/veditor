@@ -1,14 +1,20 @@
 package com.prasse.veditor.controller
 
+import com.prasse.veditor.files.JsonService
 import com.prasse.veditor.service.JsonLoader
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.ResponseBody
+import java.time.LocalDateTime
 
 @Controller
 class FragmentController(
-    val jsonLoader: JsonLoader
+    val jsonLoader: JsonLoader,
+    val jsonService: JsonService
 ) {
 
     @GetMapping("/loadAdditional/disciples/{count}")
@@ -20,10 +26,20 @@ class FragmentController(
         return "fragments/disciples"
     }
 
-    @GetMapping("/saveToast")
-    fun saveToast(model: Model): String {
-        model.addAttribute("headline", "Daten erfolgreich gespeichert.")
-        model.addAttribute("message", "Die eigentragenen Daten wurden erfolgreich gespeichert.")
+    @PostMapping("/toast")
+    fun saveToast(
+        model: Model,
+        @RequestBody body: String): String {
+        val bodyData = jsonService.jsonMapper.readTree(body)
+        val erfolgreich = bodyData.get("success").asBoolean()
+        if (erfolgreich) {
+            model.addAttribute("headline", "Daten erfolgreich gespeichert.")
+        } else {
+            model.addAttribute("headline", "Fehler beim Speichern der Daten.")
+        }
+        model.addAttribute("message", bodyData.get("message").textValue())
+        model.addAttribute("small", LocalDateTime.now().toString())
+        model.addAttribute("id", bodyData.get("id").asText());
         return "fragments/toast"
     }
 }
