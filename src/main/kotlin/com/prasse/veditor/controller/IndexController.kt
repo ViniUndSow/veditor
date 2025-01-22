@@ -35,6 +35,8 @@ class IndexController(
         model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE"))
         model.addAttribute("talente", jsonLoader.loadDataWithDefault(JsonLoader.TALENTE))
         model.addAttribute("skills", jsonLoader.loadDataWithDefault(JsonLoader.FERTIGKEITEN))
+        //
+        model.addAttribute("mode", "VIEW")
 
         return "index"
     }

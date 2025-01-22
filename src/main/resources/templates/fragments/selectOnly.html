@@ -1,6 +1,6 @@
 <div th:fragment="selectOnly(selectData, selectId, labelText, additionalColClass)"
      th:class="${additionalColClass.concat(' form-floating')}">
-    <select th:id="${selectId}" th:name="${selectId}" class="form-select" style="margin-bottom: 1%">
+    <select th:id="${selectId}" th:name="${selectId}" class="form-select" style="margin-bottom: 1%" th:disabled="${mode != 'EDIT'}">
         <option selected value="null">----</option>
         <div th:each="data : ${selectData}">
             <option th:value="${data.id}"

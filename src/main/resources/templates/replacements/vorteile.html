@@ -21,12 +21,15 @@
         </div>
         <div class="row" id="additionalDisciplnesButtonRow">
             <div class="col-6">
-                <button type="button" id="addButtonDiscipline" class="btn btn-outline-success col-12" onclick="addAdditionalDiscipline()">
+                <button type="button" id="addButtonDiscipline" class="btn btn-outline-success col-12" onclick="addAdditionalDiscipline()"
+                        th:style="${mode != 'EDIT' ? 'display:none' : 'display:block' }"
+                        th:disabled="${mode != 'EDIT'}">
                     +
                 </button>
             </div>
             <div class="col-6">
-                <button type="button" id="subButtonDiscipline" class="btn btn-outline-danger col-12" onclick="removeDisciplie()">
+                <button type="button" id="subButtonDiscipline" class="btn btn-outline-danger col-12" onclick="removeDisciplie()"
+                        th:disabled="${mode != 'EDIT'}">
                     -
                 </button>
             </div>

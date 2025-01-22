@@ -1,6 +1,7 @@
 <div class="row" th:id="${id}">
     <div class="form-floating col-9">
-        <select th:id="${id.concat('Select')}" th:name="${name}" class="form-select" style="margin-bottom: 1%">
+        <select th:id="${id.concat('Select')}" th:name="${name}" class="form-select" style="margin-bottom: 1%"
+                th:disabled="${mode != 'EDIT'}">
             <option selected value="null">----</option>
             <option th:each="disciline : ${disciplines['vampire1.0']}" th:value="${disciline.id}"
                 th:text="${disciline.name}"></option>
@@ -8,6 +9,6 @@
         <label th:for="${id.concat('Select')}" th:text="${labelName}"></label>
     </div>
     <div class="col-3">
-        <input type="range" th:id="${id}" class="form-range" min="0" max="5">
+        <input type="range" th:id="${id}" class="form-range" min="0" max="5" th:disabled="${mode != 'EDIT'}">
     </div>
 </div>
