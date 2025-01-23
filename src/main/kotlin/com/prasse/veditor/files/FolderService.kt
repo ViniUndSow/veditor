@@ -1,5 +1,6 @@
 package com.prasse.veditor.files
 
+import com.prasse.veditor.model.BasicJsonObject
 import jakarta.annotation.PostConstruct
 import org.springframework.stereotype.Component
 import java.io.File
@@ -24,6 +25,13 @@ class FolderService {
                 dataFolder.mkdirs()
             }
         }
+    }
+
+    fun getRegelwerke(): List<BasicJsonObject> {
+        return File(CUSTOM).listFiles()?.map {
+            BasicJsonObject(id = it.name.replace(".","_"), name = it.name)
+
+        } ?: emptyList()
     }
 
 }

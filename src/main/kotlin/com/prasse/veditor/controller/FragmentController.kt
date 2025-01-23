@@ -1,5 +1,6 @@
 package com.prasse.veditor.controller
 
+import com.prasse.veditor.files.FolderService
 import com.prasse.veditor.files.JsonService
 import com.prasse.veditor.model.Clan
 import com.prasse.veditor.model.Tugenden
@@ -13,14 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.ResponseBody
 import java.time.LocalDateTime
 
 @Controller
 class FragmentController(
     val jsonLoader: JsonLoader,
     val jsonService: JsonService,
-    val saveService: SaveService
+    val saveService: SaveService,
+    private val folderService: FolderService
 ) {
 
     private val logger = LoggerFactory.getLogger(FragmentController::class.java)
@@ -55,6 +56,8 @@ class FragmentController(
     fun index(model: Model,
               @RequestParam(name = "mode") mode: String,
               @RequestParam(name = "character", required = false) character: String): String {
+        //Regelwerk
+        model.addAttribute("regelwerke", folderService.getRegelwerke())
         //Attribute
         model.addAttribute("content", "stats")
         model.addAttribute("spiritual", jsonLoader.loadDataWithDefault("SPIRITUAL"))
@@ -65,7 +68,7 @@ class FragmentController(
         model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE"))
         model.addAttribute("tugenden", jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN))
         model.addAttribute("maxDisciplines", 8)
-        model.addAttribute("background", jsonLoader.loadDataWithDefault(JsonLoader.BACKGROUND))
+        model.addAttribute("backgrounds", jsonLoader.loadDataWithDefault(JsonLoader.BACKGROUND))
         // Fähigkeiten
         model.addAttribute("sect", jsonLoader.loadDataWithDefault(JsonLoader.SEKTE))
         model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE"))

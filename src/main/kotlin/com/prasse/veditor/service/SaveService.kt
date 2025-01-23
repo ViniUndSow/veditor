@@ -27,7 +27,7 @@ class SaveService(
     fun loadChracters(): List<CharacterPreview> {
         val characterList = mutableListOf<CharacterPreview>()
         Path.of(FolderService.CHARACTERS).toFile().listFiles()?.forEach { file ->
-            characterList.add( CharacterPreview(name = file.name, 1, "Test"))
+            characterList.add( CharacterPreview(name = file.nameWithoutExtension, 1, "Test"))
         }
         return characterList
     }
