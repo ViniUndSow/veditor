@@ -14,34 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping
 @Controller
 class IndexController(
     val jsonService: JsonService,
-    val jsonLoader: JsonLoader
+    val jsonLoader: JsonLoader,
+    val saveService: SaveService
 ) {
 
     @GetMapping("/")
     fun index(model: Model): String {
         //Attribute
-        model.addAttribute("content", "stats")
-        model.addAttribute("spiritual", jsonLoader.loadDataWithDefault("SPIRITUAL"))
-        model.addAttribute("socials", jsonLoader.loadDataWithDefault("SOCIAL"))
-        model.addAttribute("physical", jsonLoader.loadDataWithDefault("PHYSICAL"))
-        model.addAttribute("siteTitle", "Editor")
-        model.addAttribute("clans", jsonLoader.loadData<Clan>(JsonLoader.CLAN))
-        model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE"))
-        model.addAttribute("tugenden", jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN))
-        model.addAttribute("maxDisciplines", 8)
-        model.addAttribute("background", jsonLoader.loadDataWithDefault(JsonLoader.BACKGROUND))
-        // Fähigkeiten
-        model.addAttribute("sect", jsonLoader.loadDataWithDefault(JsonLoader.SEKTE))
-        model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE"))
-        model.addAttribute("talente", jsonLoader.loadDataWithDefault(JsonLoader.TALENTE))
-        model.addAttribute("skills", jsonLoader.loadDataWithDefault(JsonLoader.FERTIGKEITEN))
-        //
-        model.addAttribute("mode", "VIEW")
+        model.addAttribute("content", "charakterauswahl")
+        model.addAttribute("charaktere", saveService.loadChracters())
 
         return "index"
     }
-
-
 
     @PostMapping("/")
     fun reload(model: Model): String {

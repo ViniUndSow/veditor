@@ -2,15 +2,15 @@ package com.prasse.veditor.service
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.prasse.veditor.files.FolderService
+import com.prasse.veditor.files.JsonService
+import com.prasse.veditor.model.CharacterPreview
 import org.springframework.stereotype.Service
-import org.springframework.ui.Model
-import java.io.File
 import java.nio.file.Path
-import kotlin.io.path.createFile
 
 @Service
 class SaveService(
-    val folderService: FolderService
+    val folderService: FolderService,
+    private val jsonService: JsonService
 ) {
 
     fun saveChracterData(jsonNode: JsonNode) {
@@ -21,6 +21,23 @@ class SaveService(
         }
         val file = Path.of(FolderService.CHARACTERS).resolve(characterName.plus(".json")).toFile()
         file.createNewFile()
-        file.writeText(jsonData)
+        file.writeText(jsonNode.toPrettyString())
+    }
+
+    fun loadChracters(): List<CharacterPreview> {
+        val characterList = mutableListOf<CharacterPreview>()
+        Path.of(FolderService.CHARACTERS).toFile().listFiles()?.forEach { file ->
+            characterList.add( CharacterPreview(name = file.name, 1, "Test"))
+        }
+        return characterList
+    }
+
+    fun loadSingleCharacter(characterName: String): JsonNode? {
+        val data = Path.of(FolderService.CHARACTERS).resolve(characterName).toFile()
+        if(data.exists()){
+            return jsonService.jsonMapper.readTree(data)
+        } else {
+            return null
+        }
     }
 }

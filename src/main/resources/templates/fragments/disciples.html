@@ -9,6 +9,7 @@
         <label th:for="${id.concat('Select')}" th:text="${labelName}"></label>
     </div>
     <div class="col-3">
-        <input type="range" th:id="${id}" class="form-range" min="0" max="5" th:disabled="${mode != 'EDIT'}">
+        <input type="range" th:id="${id.concat('range')}" class="form-range" min="0" max="5"
+               th:disabled="${mode != 'EDIT'}">
     </div>
 </div>

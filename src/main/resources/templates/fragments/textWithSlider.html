@@ -5,7 +5,9 @@
         </div>
         <div class="col-6">
             <label>
-                <input th:name="${skill.name}" type="range" class="form-range" min="0" max="5" th:disabled="${mode != 'EDIT'}">
+                <input th:name="${#strings.toLowerCase(skill.name).concat('-range')}" type="range" class="form-range"
+                       min="0" max="5"
+                       th:disabled="${mode != 'EDIT'}">
             </label>
         </div>
     </div>

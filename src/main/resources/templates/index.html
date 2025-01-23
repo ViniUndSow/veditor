@@ -2,13 +2,14 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="~{fragments/header}">
     <title>Slayer</title>
-<body>
+<body id="body">
     <!-- Navbar oben -->
     <nav class="navbar" data-bs-theme="light" style="margin-bottom: 1%">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
         </div>
     </nav>
+
     <p th:text="${saveMessage}">
     <div th:replace="~{${content}}"></div>
     <div id="toasts">

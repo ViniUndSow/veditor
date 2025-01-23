@@ -13,7 +13,9 @@
             </label>
         </div>
         <div class="col-3">
-            <input type="range" class="form-range" min="0" max="5" th:disabled="${mode != 'EDIT'}">
+            <input type="range" th:name="${selectId.concat('-range')}" th:id="${selectId.concat('-range')}"
+                   class="form-range" min="0" max="5"
+                   th:disabled="${mode != 'EDIT'}">
         </div>
     </div>
 </div>

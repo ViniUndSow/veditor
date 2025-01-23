@@ -1,0 +1,30 @@
+<div id="chooseView" class="container">
+    <div th:replace="~{fragments/sectionHeadline::sectionHeadline('Chrakterauswahl')}"/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Level</th>
+            <th scope="col">Regelwerk</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="char: ${charaktere}">
+            <th scope="col" th:text="${char.name}"/>
+            <th scope="col" th:text="${char.level}"/>
+            <th scope="col" th:text="${char.regelwerk}"/>
+            <th
+                    scope="col"><button th:value="${char.name}"
+                                        th:data-charname="${char.name}"
+                                        th:onclick="|addStatsContent('VIEW', this.getAttribute('data-charname'));|">Weiter
+            </button></th>
+        </tr>
+        <tr>
+            <th scope="rowgroup">
+                <button onclick="addStatsContent('EDIT', null)">Neuen Charakter anlegen</button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>

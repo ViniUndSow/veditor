@@ -1,5 +1,6 @@
 package com.prasse.veditor.controller
 
+import com.fasterxml.jackson.databind.JsonNode
 import com.prasse.veditor.files.JsonService
 import com.prasse.veditor.service.SaveService
 import jakarta.servlet.http.HttpServletRequest
@@ -15,9 +16,9 @@ class SaveController(
 ) {
 
     @PostMapping("/save")
-    fun saveData(@RequestBody body: String): ResponseEntity<String> {
+    fun saveData(@RequestBody body: JsonNode): ResponseEntity<String> {
         try {
-            saveService.saveChracterData(jsonService.jsonMapper.readTree(body))
+            saveService.saveChracterData(body)
             return ResponseEntity.ok("Speichern der Daten erfolgreich");
         } catch (ex: Exception) {
             return ResponseEntity.badRequest().body(ex.message);
