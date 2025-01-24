@@ -29,7 +29,7 @@ class FolderService {
 
     fun getRegelwerke(): List<BasicJsonObject> {
         return File(CUSTOM).listFiles()?.map {
-            BasicJsonObject(id = it.name.replace(".","_"), name = it.name)
+            BasicJsonObject(id = it.name, name = it.name)
 
         } ?: emptyList()
     }

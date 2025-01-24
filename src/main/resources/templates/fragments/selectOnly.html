@@ -1,11 +1,13 @@
+<!--suppress ALL -->
 <div th:fragment="selectOnly(selectData, selectId, labelText, additionalColClass)"
      th:class="${additionalColClass.concat(' form-floating')}">
-    <select th:id="${selectId}" th:name="${selectId}" class="form-select" style="margin-bottom: 1%" th:disabled="${mode != 'EDIT'}">
-        <option selected value="null">----</option>
-        <div th:each="data : ${selectData}">
-            <option th:value="${data.id}"
-                    th:text="${data.name}"></option>
-        </div>
+    <select th:id="${selectId}" th:name="${selectId}" class="form-select" style="margin-bottom: 1%"
+            th:disabled="${mode != 'EDIT'}">
+        <option value="null" th:selected="(null == ${__${#strings.toLowerCase(labelText)}__})">----</option>
+        <option th:each="data : ${selectData}" th:value="${data.id}" th:text="${data.name}"
+                th:selected="(${data.id} == ${__${#strings.toLowerCase(labelText)}__})"
+                th:id="(${data.id} == ${#strings.toLowerCase(labelText)})"
+        />
     </select>
     <label th:for="${selectId}" class="form-label" th:text="${labelText.concat(':')}">
     </label>

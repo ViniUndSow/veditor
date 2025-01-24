@@ -1,10 +1,7 @@
+<!--suppress ALL -->
 <form id="stats" method="post" action="/save">
     <div class="container" data-bs-theme="light" style="margin-bottom: 1%">
         <div th:replace="~{fragments/sectionHeadline('Allgemeines')}"/>
-        <div class="row col-12">
-            <div
-                    th:replace="~{fragments/selectOnly(${regelwerke},'regelwerke','Regelauswahl','col-12')}"/>
-        </div>
         <div class="row col-12">
             <div th:replace="~{fragments/input :: input(type='text', id='spielername', label='Spielername', col='col-6')}"></div>
             <div th:replace="~{fragments/input :: input(type='text', id='chronik', label='Chronik', col='col-6')}"/>

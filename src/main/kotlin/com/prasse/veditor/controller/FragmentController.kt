@@ -52,42 +52,5 @@ class FragmentController(
         return "fragments/toast"
     }
 
-    @GetMapping("/stats")
-    fun index(model: Model,
-              @RequestParam(name = "mode") mode: String,
-              @RequestParam(name = "character", required = false) character: String): String {
-        //Regelwerk
-        model.addAttribute("regelwerke", folderService.getRegelwerke())
-        //Attribute
-        model.addAttribute("content", "stats")
-        model.addAttribute("spiritual", jsonLoader.loadDataWithDefault("SPIRITUAL"))
-        model.addAttribute("socials", jsonLoader.loadDataWithDefault("SOCIAL"))
-        model.addAttribute("physical", jsonLoader.loadDataWithDefault("PHYSICAL"))
-        model.addAttribute("siteTitle", "Editor")
-        model.addAttribute("clans", jsonLoader.loadData<Clan>(JsonLoader.CLAN))
-        model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE"))
-        model.addAttribute("tugenden", jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN))
-        model.addAttribute("maxDisciplines", 8)
-        model.addAttribute("backgrounds", jsonLoader.loadDataWithDefault(JsonLoader.BACKGROUND))
-        // Fähigkeiten
-        model.addAttribute("sect", jsonLoader.loadDataWithDefault(JsonLoader.SEKTE))
-        model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE"))
-        model.addAttribute("talente", jsonLoader.loadDataWithDefault(JsonLoader.TALENTE))
-        model.addAttribute("skills", jsonLoader.loadDataWithDefault(JsonLoader.FERTIGKEITEN))
-        //
-        if(character != null && character != "") {
-            val char = saveService.loadSingleCharacter(character)!!
-            char.fields().forEachRemaining {
-                if(it.value.isInt) {
-                    model.addAttribute(it.key, it.value.intValue())
-                } else if (it.value.isTextual){
-                    model.addAttribute(it.key, it.value.textValue())
-                }  else {
-                    logger.info("Keine Übereinstummung gefunden. [Key=${it.key}, Value=${it.value}]")
-                }
-            }
-        }
-        model.addAttribute("mode", mode)
-        return "stats"
-    }
+
 }

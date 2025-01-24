@@ -33,7 +33,7 @@ class SaveService(
     }
 
     fun loadSingleCharacter(characterName: String): JsonNode? {
-        val data = Path.of(FolderService.CHARACTERS).resolve(characterName).toFile()
+        val data = Path.of(FolderService.CHARACTERS).resolve(characterName+".json").toFile()
         if(data.exists()){
             return jsonService.jsonMapper.readTree(data)
         } else {
