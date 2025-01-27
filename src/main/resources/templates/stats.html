@@ -1,5 +1,10 @@
 <!--suppress ALL -->
 <form id="stats" method="post" action="/save">
+    <div class="container">
+        <div class="row col-12">
+            <div th:replace="~{fragments/selectOnly::selectOnly(${regelwerke},'regelwerke','Regelauswahl','col-12')}"/>
+        </div>
+    </div>
     <div class="container" data-bs-theme="light" style="margin-bottom: 1%">
         <div th:replace="~{fragments/sectionHeadline('Allgemeines')}"/>
         <div class="row col-12">
@@ -25,11 +30,14 @@
                     </div>
                 </div>
                 <div class="row col-12" style="margin-bottom: 1%">
-                    <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'wesen','Wesen','col-6')}"/>
-                    <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'verhalten','Verhalten','col-6')}"/>
-                </div>
+
+
+                    <div th:replace="~{fragments/selectOnly :: selectOnly(selectData=${wesen}, selectId='wesen', labelText='Wesen', additionalColClass='col-6')}"/>
+                    <div
+                            th:replace="~{fragments/selectOnly :: selectOnly(selectData=${verhalten}, selectId='verhalten', labelText='Verhalten', additionalColClass='col-6')}"/></div>
                 <div class="row col-12" style="margin-bottom: 1%">
-                    <div th:replace="~{fragments/selectOnly(${clans['vampire1.0']},'konzept','Konzept','col-5')}"/>
+                    <div
+                            th:replace="~{fragments/selectOnly :: selectOnly(selectData=${konzept}, selectId='konzept', labelText='Konzept', additionalColClass='col-5')}"/>
                     <div th:replace="~{fragments/input :: input(type='text',id='erzeuger',label='Erzeuger',col='col-5')}"/>
                     <div class="col-2">
                         <div class="form-floating">
@@ -47,11 +55,12 @@
                             <select id="clanInput" th:name="${clanInput}" class="form-select col-12"
                                     th:onchange="changeClanData()" th:disabled="${mode != 'EDIT'}">
                                 <option value="null">Bitte auswählen</option>
-                                <option th:each="clan : ${clans['vampire1.0']}" th:value="${clan.id}"
+                                <option th:each="clan : ${clans}" th:value="${clan.id}"
                                         th:text="${clan.name}"></option>
                             </select> <label for="clanInput">Clan:</label>
                         </div>
-                        <div th:replace="~{fragments/selectOnly(${sect['vampire1.0']},'sekte','Sekte','col-6')}"/>
+                        <div
+                                th:replace="~{fragments/selectOnly::selectOnly(selectData=${sect}, selectId='sekte', labelText='Sekte', additionalColClass='col-6')}"/>
                     </div>
                 </div>
                 <div class="row col-12">

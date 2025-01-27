@@ -40,7 +40,8 @@ class CharakterController(
                     logger.info("Keine Übereinstummung gefunden. [Key=${it.key}, Value=${it.value}]")
                 }
             }
-            model.addAttribute("mode", "VIEW")
+            loadDataByRegelwerk(model, regelwerk = model.getAttribute("regelauswahl") as String)
+                    model.addAttribute("mode", "EDIT")
         } else {
             model.addAttribute("mode", "EDIT")
         }
@@ -52,21 +53,27 @@ class CharakterController(
         model: Model,
         @RequestParam(name = "regelwerk", required = true) regelwerk: String,
     ): String {
+        //Charakterlich
+        model.addAttribute("wesen", jsonLoader.loadDataWithDefault("BEHAVIOR")[regelwerk])
+        model.addAttribute("verhalten", jsonLoader.loadDataWithDefault("BEHAVIOR")[regelwerk])
+        model.addAttribute("konzept", jsonLoader.loadDataWithDefault("CONCEPT")[regelwerk])
+
         //Attribute
-        model.addAttribute("spiritual", jsonLoader.loadDataWithDefault("SPIRITUAL").get(regelwerk))
-        model.addAttribute("socials", jsonLoader.loadDataWithDefault("SOCIAL").get(regelwerk))
-        model.addAttribute("physical", jsonLoader.loadDataWithDefault("PHYSICAL").get(regelwerk))
+        model.addAttribute("spiritual", jsonLoader.loadDataWithDefault("SPIRITUAL")[regelwerk])
+        model.addAttribute("socials", jsonLoader.loadDataWithDefault("SOCIAL")[regelwerk])
+        model.addAttribute("physical", jsonLoader.loadDataWithDefault("PHYSICAL")[regelwerk])
         model.addAttribute("siteTitle", "Editor")
-        model.addAttribute("clans", jsonLoader.loadData<Clan>(JsonLoader.CLAN).get(regelwerk))
-        model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE").get(regelwerk))
-        model.addAttribute("tugenden", jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN).get(regelwerk))
+        model.addAttribute("clans", jsonLoader.loadData<Clan>(JsonLoader.CLAN)[regelwerk])
+        model.addAttribute("disciplines", jsonLoader.loadDataWithDefault("DISCIPLINE")[regelwerk])
+        model.addAttribute("tugenden", jsonLoader.loadData<Tugenden>(JsonLoader.TUGENDEN)[regelwerk])
         model.addAttribute("maxDisciplines", 8)
-        model.addAttribute("backgrounds", jsonLoader.loadDataWithDefault(JsonLoader.BACKGROUND).get(regelwerk))
+        model.addAttribute("backgrounds", jsonLoader.loadDataWithDefault(JsonLoader.BACKGROUND)[regelwerk])
         // Fähigkeiten
-        model.addAttribute("sect", jsonLoader.loadDataWithDefault(JsonLoader.SEKTE).get(regelwerk))
-        model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE").get(regelwerk))
-        model.addAttribute("talente", jsonLoader.loadDataWithDefault(JsonLoader.TALENTE).get(regelwerk))
-        model.addAttribute("skills", jsonLoader.loadDataWithDefault(JsonLoader.FERTIGKEITEN).get(regelwerk))
+        model.addAttribute("sect", jsonLoader.loadDataWithDefault(JsonLoader.SEKTE)[regelwerk])
+        model.addAttribute("knowledge", jsonLoader.loadDataWithDefault("KNOWLEDGE")[regelwerk])
+        model.addAttribute("talente", jsonLoader.loadDataWithDefault(JsonLoader.TALENTE)[regelwerk])
+        model.addAttribute("skills", jsonLoader.loadDataWithDefault(JsonLoader.FERTIGKEITEN)[regelwerk])
+        //
 
         return "stats"
     }

@@ -6,16 +6,16 @@
         <div class="row">
             <h3 class="text-center">Hintergrund</h3>
             <div
-                    th:replace="~{fragments/selectWithSlider(${backgrounds['vampire1.0']}, 'background', 'Hintergrund', false)}"></div>
+                    th:replace="~{fragments/selectWithSlider(${backgrounds}, 'background', 'Hintergrund', false)}"></div>
 
         </div>
     </div>
     <div class="col-4">
         <h3 class="text-center">Disziplinen</h3>
         <div id="clanDisciplines">
-            <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed0', 'Clan 1', true)}"></div>
-            <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed1', 'Clan 2', true)}"></div>
-            <div th:replace="~{fragments/selectWithSlider(${disciplines['vampire1.0']}, 'clanDisciplineFixed2', 'Clan 3', true)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${disciplines}, 'clanDisciplineFixed0', 'Clan 1', true)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${disciplines}, 'clanDisciplineFixed1', 'Clan 2', true)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${disciplines}, 'clanDisciplineFixed2', 'Clan 3', true)}"></div>
         </div>
         <div id="additionalDisciplnes">
 
@@ -39,9 +39,9 @@
     <div class="col-4">
         <div class="row">
             <h3 class="text-center">Tugenden</h3>
-            <div th:replace="~{fragments/selectWithSlider(${tugenden['vampire1.0'].get(0).data}, 'tugend1', 'Tugend 1', false)}"></div>
-            <div th:replace="~{fragments/selectWithSlider(${tugenden['vampire1.0'].get(1).data}, 'tugend2', 'Tugend 2', false)}"></div>
-            <div th:replace="~{fragments/selectWithSlider(${tugenden['vampire1.0'].get(2).data}, 'tugend3', 'Tugend 3', false)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${tugenden.get(0).data}, 'tugend1', 'Tugend 1', false)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${tugenden.get(1).data}, 'tugend2', 'Tugend 2', false)}"></div>
+            <div th:replace="~{fragments/selectWithSlider(${tugenden.get(2).data}, 'tugend3', 'Tugend 3', false)}"></div>
         </div>
     </div>
 </div>

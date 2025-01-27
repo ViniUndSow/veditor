@@ -18,11 +18,8 @@
         </ol>
     </nav>
 </div>
-<div class="container">
-    <div class="row col-12">
-        <div th:replace="~{fragments/selectOnly::selectOnly(${regelwerke},'regelwerke','Regelauswahl','col-12')}"/>
-    </div>
+<div id="statsContent">
+    <div th:replace="stats::#stats"/>
 </div>
-<!--<div th:replace="stats::#stats"/>-->
 </body>
 </html>

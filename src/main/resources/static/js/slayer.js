@@ -37,3 +37,11 @@ function addStatsContent(mode, character) {
         }
     });
 }
+
+$.on('change',"#regelwerke",function () {
+  console.log("End")
+});
+$("#regelwerke").ready(function() {
+    var selectedValue = $('#regelwerke').val();
+    console.log(selectedValue);
+});
