@@ -24,12 +24,17 @@ class CharakterController(
 
     @GetMapping("/character")
     fun index(model: Model,
-              @RequestParam(name = "character", required = false) character: String): String {
+              @RequestParam(name = "character", required = false) character: String?,
+              @RequestParam(name = "action", required = false) action: String?): String {
         //Regelwerk
-        model.addAttribute("regelwerke", folderService.getRegelwerke())
-        model.addAttribute("character", character)
+        if(action != null && action == "new") {
+            model.addAttribute("regelwerke", folderService.getRegelwerke())
+            model.addAttribute("mode", "EDIT")
+            model.addAttribute("regelauswahl", null)
+        }
 
         if(character != null && character != "") {
+            model.addAttribute("character", character)
             val char = saveService.loadSingleCharacter(character)!!
             char.fields().forEachRemaining {
                 if(it.value.isInt) {
@@ -42,8 +47,6 @@ class CharakterController(
             }
             loadDataByRegelwerk(model, regelwerk = model.getAttribute("regelauswahl") as String)
                     model.addAttribute("mode", "EDIT")
-        } else {
-            model.addAttribute("mode", "EDIT")
         }
         return "characterSheet"
     }
@@ -53,6 +56,13 @@ class CharakterController(
         model: Model,
         @RequestParam(name = "regelwerk", required = true) regelwerk: String,
     ): String {
+        if(regelwerk == "null") {
+            throw Exception("Regelwerk cannot be null")
+        } else {
+            model.addAttribute("regelauswahl", regelwerk)
+        }
+        model.addAttribute("regelwerke", folderService.getRegelwerke())
+
         //Charakterlich
         model.addAttribute("wesen", jsonLoader.loadDataWithDefault("BEHAVIOR")[regelwerk])
         model.addAttribute("verhalten", jsonLoader.loadDataWithDefault("BEHAVIOR")[regelwerk])
@@ -74,6 +84,7 @@ class CharakterController(
         model.addAttribute("talente", jsonLoader.loadDataWithDefault(JsonLoader.TALENTE)[regelwerk])
         model.addAttribute("skills", jsonLoader.loadDataWithDefault(JsonLoader.FERTIGKEITEN)[regelwerk])
         //
+        model.addAttribute("mode", "EDIT")
 
         return "stats"
     }
