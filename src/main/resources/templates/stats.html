@@ -77,4 +77,50 @@
                 th:style="${mode != 'EDIT' ? 'display:none' : 'display:block' }">Speichern &
             Beenden</button>
     </div>
+    <script>
+
+        var saveUrl = '/save';
+        const form = document.getElementById('stats');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Verhindert den Standardformularversand
+            const formData = new FormData(form);
+            const convertedData = Object.fromEntries(
+                [...formData.entries()].map(([key, value]) => {
+                    // Check if the key corresponds to a range input, or generally parse numbers
+                    if (key.includes('range') || key.includes('number')) {
+                        // You can adapt this condition to fit your form structure
+                        return [key, parseInt(value, 10)]; // Convert to integer
+                    }
+                    if (value === "null") {
+                        return [key, null]
+                    }
+                    return [key, value]; // Keep other values as they are
+                })
+            );
+
+            const json = JSON.stringify(convertedData);
+            var responseOk;
+            console.log(json)
+            fetch(form.action, {
+                url: saveUrl,
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: json,
+            })
+                .then(response => {
+                    responseOk = response.ok;
+                    return response.text()
+                })
+                .then(responseBody => {
+                        addSaveToast(responseBody, responseOk).then(resp => {
+                            var saveToast = document.getElementById('saveToast');
+                            new bootstrap.Toast(saveToast).show()
+                            console.log(responseBody)
+                        });
+                    }
+                );
+        });
+    </script>
 </form>
